@@ -1,0 +1,42 @@
+{% extends 'base.html'%}
+{% block content %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <title>{{title}}</title>
+    </head>
+    <body>
+         {{bdata}}
+         {% for i in clist%}
+          <div>{{forloop.counter}}{{i}}</div>
+         {% endfor %}
+         <br>
+        <table border='1' cellpadding='10px'>
+            <tr>
+                <th>Name</th>
+                <th>phone</th>
+            </tr>
+            {% for i in std_details%}
+            <tr>
+                <td>{{i.name}}</td>
+                <td>{{i.phone}}</td>
+            </tr>
+            {% endfor %}
+        </table>  
+        {% if number|length > 0 %}
+          {% for i in number%}
+            {%if i > 20 %}
+              <div>{{i}}</div>
+            {% endif %}  
+          {% endfor %}
+        {% else %}
+             No data found
+        {% endif %}
+        <img src= '/static/photo.jpeg' alt="my_photo">
+    </body>
+</html>
+{%endblock  %}
